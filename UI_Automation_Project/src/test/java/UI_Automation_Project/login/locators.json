@@ -1,0 +1,12 @@
+{
+	"saucelabsLogin":{
+		"Username":"//*[@id='user-name']",
+		"Password":"//*[@id='password']",
+		"Login_Button":"//*[@id='login-button']"
+	},
+	"saucelabs":{
+		"Sauce_Labs_Fleece_Jacket":"//*[@id='item_5_title_link']",
+		"add_to_cart":"//*[@id='add-to-cart']",
+		"cart_items_count":"//*[@id='shopping_cart_container']/a/span"
+	}
+}
