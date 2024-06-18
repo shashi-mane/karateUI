@@ -1,4 +1,4 @@
-name: UI Automation with Karate
+name: Java Test with TestLoginRunner
 
 on:
   push:
@@ -22,14 +22,19 @@ jobs:
           java-version: '11'
           distribution: 'adopt'
 
-      - name: Make TestLoginRunner.java executable
-        run: chmod +x UI_Automation_Project/src/test/java/UI_Automation_Project/login/TestLoginRunner.java
+      - name: Compile Java source
+        run: |
+          javac -cp "path/to/your/dependencies" UI_Automation_Project/src/test/java/UI_Automation_Project/login/TestLoginRunner.java
+          # Replace "path/to/your/dependencies" with the actual path if there are dependencies
 
-      - name: Run TestLoginRunner.java
-        run: ./UI_Automation_Project/src/test/java/UI_Automation_Project/login/TestLoginRunner.java
+      - name: Run Java test
+        run: |
+          java -cp "path/to/compiled/classes:path/to/your/dependencies" UI_Automation_Project.src.test.java.UI_Automation_Project.login.TestLoginRunner
+          # Adjust the class path and class name based on your project structure
+          # Ensure you specify the correct classpath and class name with package structure
 
       - name: Upload test results
         uses: actions/upload-artifact@v2
         with:
           name: test-results
-          path: target/karate-reports  # Adjust path based on your Karate test report location
+          path: path/to/your/test/reports  # Adjust path based on your test report location
