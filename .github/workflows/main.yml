@@ -16,16 +16,16 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Set up JDK 11
+      - name: Set up Java JDK
         uses: actions/setup-java@v2
         with:
-          java-version: '11'
-          distribution: 'adopt'
+          java-version: '11'  # Adjust Java version as needed
 
-      - name: Run Karate tests
-        run: |
-          # Assuming login.runner is a script or command that runs login.feature
-          ./UI_Automation_Project/src/test/java/UI_Automation_Project/login/TestLoginRunner.java
+      - name: Make TestLoginRunner.java executable
+        run: chmod +x UI_Automation_Project/src/test/java/UI_Automation_Project/login/TestLoginRunner.java
+
+      - name: Run TestLoginRunner.java
+        run: ./UI_Automation_Project/src/test/java/UI_Automation_Project/login/TestLoginRunner.java
 
       - name: Upload test results
         uses: actions/upload-artifact@v2
