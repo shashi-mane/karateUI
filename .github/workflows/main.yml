@@ -22,13 +22,10 @@ jobs:
           java-version: '11'
           distribution: 'adopt'
 
-      - name: Navigate to project directory
-        run: cd UI_Automation_Project  # Adjust if your project directory is different
-
-      - name: Build with Maven
+      - name: Build and Test with Maven
         run: |
-          mvn clean test-compile
-          mvn -Dtest=com.api.uiAutomation.UI_Automation_Project.login.TestLoginRunner test
+          mvn -f UI_Automation_Project/pom.xml clean test-compile
+          mvn -f UI_Automation_Project/pom.xml -Dtest=com.api.uiAutomation.UI_Automation_Project.login.TestLoginRunner test
 
       - name: Upload test results
         uses: actions/upload-artifact@v2
