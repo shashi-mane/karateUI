@@ -1,0 +1,33 @@
+name: UI Automation with Karate
+
+on:
+  push:
+    branches:
+      - main  # Adjust branch name as per your main branch
+  pull_request:
+    branches:
+      - main  # Adjust branch name as per your main branch
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Java JDK
+        uses: actions/setup-java@v2
+        with:
+          java-version: '11'  # Adjust Java version as needed
+
+      - name: Run Karate tests
+        run: |
+          # Assuming login.runner is a script or command that runs login.feature
+          ./UI_Automation_Project/src/test/java/UI_Automation_Project/login/TestLoginRunner.java
+
+      - name: Upload test results
+        uses: actions/upload-artifact@v2
+        with:
+          name: test-results
+          path: target/karate-reports  # Adjust path based on your Karate test report location
