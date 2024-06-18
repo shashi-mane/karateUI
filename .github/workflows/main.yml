@@ -22,6 +22,9 @@ jobs:
           java-version: '11'
           distribution: 'adopt'
 
+      - name: Navigate to project directory
+        run: cd UI_Automation_Project  # Adjust if your project directory is different
+
       - name: Build with Maven
         run: mvn clean test-compile
 
@@ -32,4 +35,4 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: test-results
-          path: target/surefire-reports  # Adjust path based on your test report location
+          path: UI_Automation_Project/target/surefire-reports  # Adjust path based on your test report location
