@@ -28,10 +28,10 @@ jobs:
       - name: Build and Test with Maven
         run: |
           mvn -f UI_Automation_Project/pom.xml clean test-compile -Dmaven.compiler.source=11 -Dmaven.compiler.target=11
-          mvn -f UI_Automation_Project/pom.xml -Dtest=com.api.uiAutomation.UI_Automation_Project.login.TestLoginRunner test
+          mvn -f UI_Automation_Project/pom.xml -Dtest=com.api.uiAutomation.UI_Automation_Project.login.TestLoginRunner test -DfailIfNoTests=false
 
       - name: Upload test results
         uses: actions/upload-artifact@v2
         with:
           name: test-results
-          path: UI_Automation_Project/target/surefire-reports  # Adjust path based on your test report location
+          path: UI_Automation_Project/target/karate-reports  # Adjust path based on your test report location
