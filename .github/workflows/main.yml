@@ -62,9 +62,19 @@ jobs:
           url: https://www.saucedemo.com/
           tests: UI_Automation_Project/src/test/java/UI_Automation_Project/login/TestLoginRunner.java
           output-directory: target/karate-reports  # Specify the output directory for Karate reports
+          format: json
 
       - name: List files in target/karate-reports
         run: ls -R target/karate-reports
+
+      - name: Parse Karate Test Results
+        run: |
+          results=$(cat target/karate-reports/*.json)
+          passed=$(echo $results | jq '.report.scenarioResults | map(select(.passed)) | length')
+          failed=$(echo $results | jq '.report.scenarioResults | map(select(.failed)) | length')
+          echo "Karate Tests Summary:"
+          echo "Passed: $passed"
+          echo "Failed: $failed"
 
       - name: Upload Test Reports
         uses: actions/upload-artifact@v4
