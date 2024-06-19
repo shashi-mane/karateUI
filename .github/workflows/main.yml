@@ -27,8 +27,11 @@ jobs:
 
       - name: Build and Test with Maven
         run: |
-          mvn -f UI_Automation_Project/pom.xml clean test-compile -Dmaven.compiler.source=11 -Dmaven.compiler.target=11
-          mvn -f UI_Automation_Project/pom.xml -Dtest=com.api.uiAutomation.UI_Automation_Project.login.TestLoginRunner test -DfailIfNoTests=false
+          mvn -f pom.xml clean test-compile -Dmaven.compiler.source=11 -Dmaven.compiler.target=11
+          mvn -f pom.xml -Dtest=com.api.uiAutomation.UI_Automation_Project.login.TestLoginRunner test -DfailIfNoTests=false
+
+      - name: Debug - List contents of target directory
+        run: ls -R UI_Automation_Project/target
 
       - name: Upload test results
         uses: actions/upload-artifact@v2
