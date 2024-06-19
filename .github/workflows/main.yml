@@ -41,4 +41,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: karate-reports
-          path: UI_Automation_Project/target/site
+          path: UI_Automation_Project/target/surefire-reports
