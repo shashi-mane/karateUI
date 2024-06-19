@@ -25,21 +25,16 @@ jobs:
       - name: Navigate to project directory
         run: cd UI_Automation_Project  # Adjust if your project directory is different
 
-      - name: Make directory to upload results
-        run: mkdir -p testResults
-
       - name: Build and Test with Maven
         run: |
           mvn -f UI_Automation_Project/pom.xml clean test-compile -Dmaven.compiler.source=11 -Dmaven.compiler.target=11
           mvn -f UI_Automation_Project/pom.xml -Dtest=com.api.uiAutomation.UI_Automation_Project.login.TestLoginRunner test -DfailIfNoTests=false
           
-      - name: Debug - List contents of target directory
-        run: ls -R UI_Automation_Project/target
+      - name: Generate Karate HTML Reports
+        run: mvn -f UI_Automation_Project/pom.xml verify
 
-      - name: Upload test results
-        if: always()
+      - name: Archive Karate HTML Reports
         uses: actions/upload-artifact@v2
         with:
-          name: test-results
-          # path: UI_Automation_Project/target/karate-reports  # Adjust path based on your test report location
-          path: testResults
+          name: karate-reports
+          path: UI_Automation_Project/target/karate-reports
