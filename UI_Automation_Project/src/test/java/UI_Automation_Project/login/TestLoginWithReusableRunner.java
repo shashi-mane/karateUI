@@ -7,7 +7,7 @@ public class TestLoginRunner {
 
 	@Test
 	public Karate testRun() {
-		return Karate.run("login").relativeTo(getClass());
-		// return Karate.run("loginUsingReusable").relativeTo(getClass());
+//		return Karate.run("login").relativeTo(getClass());
+		return Karate.run("loginUsingReusable").relativeTo(getClass());
 	}
 }
