@@ -1,0 +1,4 @@
+username,password,invalid_error,invalid_username,invalid_password,empty_username,empty_password,empty_error,,,,,
+standard_user,secret_sauce,Epic sadface: Username and password do not match any user in this service,standard_invalid_user,secret_sauce,,secret_sauce,Epic sadface: Username is required,,,,,
+problem_user,secret_sauce,Epic sadface: Username and password do not match any user in this service,standard_user,invalid_secret_sauce,standard_user,,Epic sadface: Password is required,,,,,
+error_user,secret_sauce,Epic sadface: Username and password do not match any user in this service,standard_invalid_user,invalid_secret_sauce,,,Epic sadface: Username is required,,,,,
