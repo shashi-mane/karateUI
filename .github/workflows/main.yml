@@ -1,3 +1,48 @@
+# name: Java Test with TestLoginRunner
+
+# on:
+#   push:
+#     branches:
+#       - main
+#   pull_request:
+#     branches:
+#       - main
+
+# jobs:
+#   test:
+#     runs-on: ubuntu-latest
+
+#     steps:
+#       - name: Checkout code
+#         uses: actions/checkout@v4
+#         with:
+#           token: ${{ secrets.GITHUB_TOKEN }}
+
+#       - name: Set up JDK 11
+#         uses: actions/setup-java@v4
+#         with:
+#           java-version: '11'
+#           distribution: 'adopt'
+
+#       - name: Navigate to project directory
+#         run: cd UI_Automation_Project  # Adjust if your project directory is different
+
+#       - name: Build and Test with Maven
+#         run: |
+#           mvn -f UI_Automation_Project/pom.xml clean test-compile -Dmaven.compiler.source=11 -Dmaven.compiler.target=11
+#           mvn -f UI_Automation_Project/pom.xml test -Dtest=com.api.uiAutomation.UI_Automation_Project.login.TestLoginRunner -DfailIfNoTests=false
+          
+#       - name: Generate Karate HTML Reports
+#         run: mvn -f UI_Automation_Project/pom.xml verify
+
+#       - name: Archive Karate HTML Reports
+#         uses: actions/upload-artifact@v4
+#         with:
+#           name: karate-reports
+#           path: UI_Automation_Project/target/surefire-reports
+
+
+
 name: Java Test with TestLoginRunner
 
 on:
@@ -15,28 +60,21 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Set up JDK 11
+      - name: Set up JDK
         uses: actions/setup-java@v4
         with:
           java-version: '11'
-          distribution: 'adopt'
 
-      - name: Navigate to project directory
-        run: cd UI_Automation_Project  # Adjust if your project directory is different
-
-      - name: Build and Test with Maven
+      - name: Run LoginRunner.java and generate test results
         run: |
-          mvn -f UI_Automation_Project/pom.xml clean test-compile -Dmaven.compiler.source=11 -Dmaven.compiler.target=11
-          mvn -f UI_Automation_Project/pom.xml test -Dtest=com.api.uiAutomation.UI_Automation_Project.login.TestLoginRunner -DfailIfNoTests=false
-          
-      - name: Generate Karate HTML Reports
-        run: mvn -f UI_Automation_Project/pom.xml verify
+          mvn clean test-compile exec:java -Dexec.mainClass="com.api.uiAutomation.UI_Automation_Project.login.TestLoginRunner" -X
+          ls -R UI_Automation_Project/target/surefire-reports
 
-      - name: Archive Karate HTML Reports
+      - name: Archive Karate Test Results
         uses: actions/upload-artifact@v4
         with:
-          name: karate-reports
+          name: karate-ui-test-results
           path: UI_Automation_Project/target/surefire-reports
+
+
