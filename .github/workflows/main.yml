@@ -39,4 +39,4 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: karate-reports
-          path: target/karate-reports
+          path: UI_Automation_Project/target/karate-reports
