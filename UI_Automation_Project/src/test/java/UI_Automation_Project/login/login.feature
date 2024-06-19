@@ -6,7 +6,7 @@ Background:
 * def testData = read('classpath:UI_Automation_Project/login/testData.json')
 
 # user login using login details in testData.json file 
-Scenario: Login with valid login credentials using standard user
+Scenario: Login with valid login credentials using standard users
     Given driver baseUrl
     And input(locators.saucelabsLogin.Username, testData.Standard_login.Username)
     * delay(3000)
