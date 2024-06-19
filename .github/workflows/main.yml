@@ -37,8 +37,8 @@ jobs:
         continue-on-error: true
 
       - name: Archive Karate HTML Reports
-        if: always()  # Only archive if the previous step was successful
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: karate-reports
-          path: target/surefire-reports
+          path: UI_Automation_Project/target/surefire-reports
