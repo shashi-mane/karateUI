@@ -39,19 +39,6 @@
                     </includes>
                 </configuration>
             </plugin>
-            
-            <plugin>
-                <groupId>com.intuit.karate</groupId>
-                <artifactId>karate-maven-plugin</artifactId>
-                <version>1.2.0</version> <!-- Adjust version as necessary -->
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>test</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
         </plugins>
     </build>
 </project>
