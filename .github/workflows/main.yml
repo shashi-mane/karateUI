@@ -30,6 +30,11 @@ jobs:
           mvn -f UI_Automation_Project/pom.xml clean test-compile -Dmaven.compiler.source=11 -Dmaven.compiler.target=11
           mvn -f UI_Automation_Project/pom.xml -Dtest=com.api.uiAutomation.UI_Automation_Project.login.TestLoginRunner test -DfailIfNoTests=false
 
+      - name: Generate Karate UI report
+        run: |
+          mkdir -p UI_Automation_Project/target/karate-reports
+          cp -r UI_Automation_Project/target/surefire-reports/. UI_Automation_Project/target/karate-reports/
+          
       - name: Debug - List contents of target directory
         run: ls -R UI_Automation_Project/target
 
