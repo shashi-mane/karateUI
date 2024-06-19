@@ -61,15 +61,15 @@ jobs:
         with:
           url: https://www.saucedemo.com/
           tests: UI_Automation_Project/src/test/java/UI_Automation_Project/login/TestLoginRunner.java
-          output-directory: target/karate-reports  # Specify the output directory for Karate reports
+          output-directory: UI_Automation_Project/target/karate-reports  # Specify the output directory for Karate reports
           format: json
 
       - name: List files in target/karate-reports
-        run: ls -R target/karate-reports
+        run: ls -R UI_Automation_Project/target/karate-reports
 
       - name: Parse Karate Test Results
         run: |
-          results=$(cat target/karate-reports/*.json)
+          results=$(cat UI_Automation_Project/target/karate-reports/*.json)
           passed=$(echo $results | jq '.report.scenarioResults | map(select(.passed)) | length')
           failed=$(echo $results | jq '.report.scenarioResults | map(select(.failed)) | length')
           echo "Karate Tests Summary:"
@@ -80,4 +80,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: Karate Reports
-          path: target/karate-reports  # Path to the directory where Karate reports are generated
+          path: UI_Automation_Project/target/karate-reports  # Path to the directory where Karate reports are generated
