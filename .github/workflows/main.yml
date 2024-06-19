@@ -27,11 +27,11 @@ jobs:
 
       - name: Build and Test with Maven
         run: |
-          mvn -f pom.xml clean test-compile -Dmaven.compiler.source=11 -Dmaven.compiler.target=11
-          mvn -f pom.xml test -Dtest=com.api.uiAutomation.UI_Automation_Project.login.TestLoginRunner -DfailIfNoTests=false
+          mvn -f UI_Automation_Project/pom.xml clean test-compile -Dmaven.compiler.source=11 -Dmaven.compiler.target=11
+          mvn -f UI_Automation_Project/pom.xml test -Dtest=com.api.uiAutomation.UI_Automation_Project.login.TestLoginRunner -DfailIfNoTests=false
           
       - name: Generate Karate HTML Reports
-        run: mvn -f pom.xml verify
+        run: mvn -f UI_Automation_Project/pom.xml verify
 
       - name: Archive Karate HTML Reports
         uses: actions/upload-artifact@v2
