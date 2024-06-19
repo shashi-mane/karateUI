@@ -33,12 +33,12 @@ jobs:
           mvn -f UI_Automation_Project/pom.xml test -Dtest=com.api.uiAutomation.UI_Automation_Project.login.TestLoginRunner -DfailIfNoTests=false
           
       - name: Generate Karate HTML Reports
-        run: mvn -f UI_Automation_Project/pom.xml verify
-        continue-on-error: true  # Continue even if the verify step fails to ensure reports are archived
+        run: mvn -f UI_Automation_Project/pom.xml site -DskipTests=true
+        continue-on-error: true  # Continue even if the site generation fails to ensure reports are archived
 
       - name: Archive Karate HTML Reports
         if: always()  # Only archive if the previous step was successful
         uses: actions/upload-artifact@v4
         with:
           name: karate-reports
-          path: UI_Automation_Project/target/surefire-reports
+          path: UI_Automation_Project/target/site
