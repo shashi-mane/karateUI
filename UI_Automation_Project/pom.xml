@@ -82,8 +82,8 @@
                 </includes>
                 <testSourceDirectory>${project.basedir}/UI_Automation_Project</testSourceDirectory>
             </configuration> -->
-            </plugin>          
+<!--             </plugin>          
         </plugins> 
 	</build>
 </project>
- -->
+ --> -->
