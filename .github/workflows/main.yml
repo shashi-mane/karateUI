@@ -33,8 +33,8 @@ jobs:
           mvn -f UI_Automation_Project/pom.xml test -Dtest=com.api.uiAutomation.UI_Automation_Project.login.TestLoginRunner -DfailIfNoTests=false
           
       - name: Generate Karate HTML Reports
-        run: mvn -f UI_Automation_Project/pom.xml site -DskipTests=true
-        continue-on-error: true  # Continue even if the site generation fails to ensure reports are archived
+        run: mvn -f UI_Automation_Project/pom.xml site -DskipTests=true -Dmaven.site.skip=true
+        continue-on-error: true
 
       - name: Archive Karate HTML Reports
         if: always()  # Only archive if the previous step was successful
