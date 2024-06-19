@@ -64,7 +64,8 @@ jobs:
       with:
         url: https://www.saucedemo.com/
         tests: |
-         UI_Automation_Project/src/test/java/UI_Automation_Project/login/login.feature
+         UI_Automation_Project/src/test/java/UI_Automation_Project/login/TestLoginRunner.java
+
  
     # Upload the contents of Test Results directory to workspace
     - name: Output the run Details
