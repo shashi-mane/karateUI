@@ -1,4 +1,4 @@
-name: Java Test with TestProductPurchaseRunner
+name: Java Test with TestLoginRunner
 
 on:
   push:
