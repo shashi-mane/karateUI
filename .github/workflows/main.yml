@@ -3,10 +3,10 @@ name: Java Test with TestLoginRunner
 on:
   push:
     branches:
-      - main  # Adjust branch name as per your main branch
+      - main
   pull_request:
     branches:
-      - main  # Adjust branch name as per your main branch
+      - main
 
 jobs:
   test:
@@ -27,14 +27,14 @@ jobs:
 
       - name: Build and Test with Maven
         run: |
-          mvn -f UI_Automation_Project/pom.xml clean test-compile -Dmaven.compiler.source=11 -Dmaven.compiler.target=11
-          mvn -f UI_Automation_Project/pom.xml -Dtest=com.api.uiAutomation.UI_Automation_Project.login.TestLoginRunner test -DfailIfNoTests=false
+          mvn -f pom.xml clean test-compile -Dmaven.compiler.source=11 -Dmaven.compiler.target=11
+          mvn -f pom.xml test -Dtest=com.api.uiAutomation.UI_Automation_Project.login.TestLoginRunner -DfailIfNoTests=false
           
       - name: Generate Karate HTML Reports
-        run: mvn -f UI_Automation_Project/pom.xml verify
+        run: mvn -f pom.xml verify
 
       - name: Archive Karate HTML Reports
         uses: actions/upload-artifact@v2
         with:
           name: karate-reports
-          path: UI_Automation_Project/target/karate-reports
+          path: target/karate-reports
