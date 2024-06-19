@@ -67,7 +67,7 @@ jobs:
         run: ls -R target/karate-reports
 
       - name: Upload Test Reports
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: Karate Reports
           path: target/karate-reports  # Path to the directory where Karate reports are generated
