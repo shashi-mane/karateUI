@@ -76,9 +76,9 @@ jobs:
           java-version: '11'
           distribution: 'adopt'  # Specify the distribution
  
-      - name: Install dependencies
-        run: mvn clean install -DskipTests
-        working-directory: UI_Automation_Project  # Set the working directory to swaglab
+      # - name: Install dependencies
+      #   run: mvn clean install -DskipTests
+      #   working-directory: UI_Automation_Project  # Set the working directory to swaglab
  
       - name: Run Login Scenarios
         working-directory: UI_Automation_Project  # Set the working directory to swaglab
